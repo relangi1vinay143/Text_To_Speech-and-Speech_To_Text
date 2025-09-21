@@ -1,9 +1,11 @@
 from django.shortcuts import render
+from django.conf import settings
 from gtts import gTTS
 import os
 from application1 import views
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from pydub import AudioSegment
 import speech_recognition as sr
 import tempfile
 import os
@@ -12,18 +14,27 @@ def home(request):
     return render(request, "application1/home.html")
 
 def Test_Case1(request):
-    audio_file=None
-    if request.method=="POST":
-        text=request.POST.get("text")
+    audio_file = None
+    if request.method == "POST":
+        text = request.POST.get("text")
         if text:
-            tts=gTTS(text=text,lang="en",slow=False)
-            os.makedirs("media",exist_ok=True)
-            audio_file="media/output.mp3"
-            tts.save(audio_file)
-    return render(request,"application1/S1.html",{"audio_file":audio_file})
+            tts = gTTS(text=text, lang="en", slow=False)
+
+            os.makedirs(settings.MEDIA_ROOT, exist_ok=True)
+
+            file_name = "output.mp3"
+            file_path = os.path.join(settings.MEDIA_ROOT, file_name)
+
+            # Save inside /media/output.mp3
+            tts.save(file_path)
+
+            # This will become "/media/output.mp3"
+            audio_file = settings.MEDIA_URL + file_name  
+
+    return render(request, "application1/S1.html", {"audio_file": audio_file})
 
 
-from pydub import AudioSegment
+# from pydub import AudioSegment
 
 def Test_Case2(request):
     if request.method == "POST" and request.FILES.get("audio"):
