@@ -25,3 +25,6 @@ tzdata==2025.2
 urllib3==2.5.0
 wavio==0.0.9
 whitenoise==6.11.0
+setuptools
+setuptools-scm
+python-3.10.0
