@@ -16,11 +16,11 @@ SECRET_KEY = 'django-insecure-w9jdr7!1e3xjvf&-ewrjxezjf7t(9-^a=%b8bd7qx$s+y_31%3
 DEBUG = False
 
 # ✅ Dynamic allowed hosts for Render
-RENDER_EXTERNAL_HOSTNAME = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
-if RENDER_EXTERNAL_HOSTNAME:
-    ALLOWED_HOSTS = [RENDER_EXTERNAL_HOSTNAME, "localhost", "127.0.0.1"]
-else:
-    ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = [
+    "text-to-speech-and-speech-to-text-yhng.onrender.com",
+    "localhost",
+    "127.0.0.1",
+]
 
 # Application definition
 INSTALLED_APPS = [
