@@ -1,0 +1,11 @@
+.background {
+    background-image: url("../Images/A1.3c1efb7bc5a2.png");
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
