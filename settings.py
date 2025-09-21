@@ -13,7 +13,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, "templates")
 SECRET_KEY = 'django-insecure-w9jdr7!1e3xjvf&-ewrjxezjf7t(9-^a=%b8bd7qx$s+y_31%3'
 
 # 🚨 Turn off debug in production
-DEBUG = False
+DEBUG = True
 
 # ✅ Dynamic allowed hosts for Render
 ALLOWED_HOSTS = [
@@ -49,12 +49,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'Google_translator.urls'
+ROOT_URLCONF = 'urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATES_DIR],
+        'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -67,7 +67,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'Google_translator.wsgi.application'
+WSGI_APPLICATION = 'wsgi.application'
 
 # Database (SQLite for now)
 DATABASES = {
